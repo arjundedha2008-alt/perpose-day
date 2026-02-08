@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Propose Day 💍</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff5f9e, #ff9a9e);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 30px 25px;
+      width: 95%;
+      max-width: 420px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      margin-bottom: 15px;
+      animation: pulse 2s infinite;
+    }
+
+    .step-text {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      min-height: 140px;
+      margin: 20px 0;
+      animation: slideUp 0.6s ease;
+    }
+
+    button {
+      background: #fff;
+      color: #ff3f7f;
+      border: none;
+      padding: 12px 22px;
+      margin: 10px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      background: #ffe6ee;
+    }
+
+    .yes-btn {
+      background: #ff3f7f;
+      color: white;
+    }
+
+    .yes-btn:hover {
+      background: #ff1f6d;
+    }
+
+    .hidden { display: none; }
+
+    .hearts span {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Hey cutiee… suno na 💗</h1>
+    <div id="text" class="step-text"></div>
+
+    <div id="buttons">
+      <button onclick="nextStep()">thoda sa merko touch karna 😳</button>
+    </div>
+  </div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    const steps = [
+      "Mujhe pata hai ye thoda ajeeb lag sakta hai… hehhe🙈",
+      "Par jab bhi ap samne hoti ho na… duniya slow ho jaati hai 💫",
+      "apkii smile dekh ke automatically din better ho jaata hai 🫠💗",
+      "Mai perfect nahi hoon… galtiyan bhi karta hoon 😅",
+      "Par ek cheez pakki hai…",
+      "Mai apko hamesha khush rakhne ki koshish karunga 🌹",
+      "Har boring din ko special bana dunga ✨",
+      "Aur har mushkil waqt me tumhara saath dunga 🤍",
+      "Ab last baat… dil se 💓",
+      "Kya tum meri zindagi ka sabse khoobsurat hissa banna chahogi? 💍🥺"
+    ];
+
+    let index = 0;
+    const textEl = document.getElementById('text');
+    const buttonsEl = document.getElementById('buttons');
+
+    function nextStep() {
+      if (index < steps.length) {
+        textEl.innerText = steps[index];
+        index++;
+      }
+
+      if (index === steps.length) {
+        buttonsEl.innerHTML = `
+          <button class="yes-btn" onclick="yesClick()">YES 💖</button>
+          <button onclick="noClick()">Sochne do 🙈</button>
+        `;
+      }
+    }
+
+    function yesClick() {
+      textEl.innerText = "Yayyyy 😭💖 Mujhe pta tha ap YES hi bologi! ap meri duniya ho 🌍💍";
+      buttonsEl.innerHTML = "<button class='yes-btn'>Forever & Always 💞</button>";
+      startHearts();
+    }
+
+    function noClick() {
+      textEl.innerText = "Koi baat nhi… thoda aur soch lo 🥹 Main yahin hoon 💗";
+    }
+
+    function startHearts() {
+      for (let i = 0; i < 40; i++) {
+        const span = document.createElement('span');
+        span.innerText = '❤️';
+        span.style.left = Math.random() * 100 + 'vw';
+        span.style.animationDuration = 3 + Math.random() * 3 + 's';
+        document.getElementById('hearts').appendChild(span);
+      }
+    }
+  </script>
+
+</body>
+</html>
+s
